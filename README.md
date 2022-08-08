@@ -13,7 +13,7 @@ export default defineConfig({
     plugins: [
         tdViteTransformReact({
             htmlPath: './src/index.html', // html的地址
-            entriesPath: '/src/app.js' // 入口js文件
+            entriesPath: '/src/app.js' // 入口js文件,注意这里不需要点
         })
     ]
 })

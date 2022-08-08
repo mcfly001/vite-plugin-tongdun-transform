@@ -3,13 +3,13 @@
  * @Author: 郑泳健
  * @Date: 2022-08-08 10:04:24
  * @LastEditors: 郑泳健
- * @LastEditTime: 2022-08-08 13:37:51
+ * @LastEditTime: 2022-08-08 14:32:44
  */
-import fs from 'fs';
-import path from 'path'
-import history from 'connect-history-api-fallback';
+const fs = require('fs');
+const path = require('path');
+const history = require('connect-history-api-fallback');
 
-export function tdViteTransformReact({ htmlPath = './src/index.html', entriesPath = './src/app.js' }) {
+module.exports = function tdViteTransformReact({ htmlPath = './src/index.html', entriesPath = '/src/app.js' }) {
     return [
         {
             name: 'vite-plugin-tongdun-react-transfrom',

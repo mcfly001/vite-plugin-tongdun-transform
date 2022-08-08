@@ -3,11 +3,11 @@
  * @Author: 郑泳健
  * @Date: 2022-08-08 10:04:24
  * @LastEditors: 郑泳健
- * @LastEditTime: 2022-08-08 13:38:14
+ * @LastEditTime: 2022-08-08 14:28:24
  */
-import { tdViteTransformReact } from './transformReact'
+const tdViteTransformReact = require('./transformReact')
 
-export default {
-    /** react 工程 */
+/** react 工程 */
+module.exports = {
     tdViteTransformReact
 }
