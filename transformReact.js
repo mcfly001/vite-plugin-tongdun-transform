@@ -5,7 +5,6 @@
  * @LastEditors: 郑泳健
  * @LastEditTime: 2022-08-11 19:28:38
  */
-const fs = require('fs');
 const path = require('path');
 const history = require('connect-history-api-fallback');
 
