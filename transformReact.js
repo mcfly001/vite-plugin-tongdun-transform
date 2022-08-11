@@ -3,7 +3,7 @@
  * @Author: 郑泳健
  * @Date: 2022-08-08 10:04:24
  * @LastEditors: 郑泳健
- * @LastEditTime: 2022-08-08 14:32:44
+ * @LastEditTime: 2022-08-11 19:28:38
  */
 const fs = require('fs');
 const path = require('path');
@@ -14,12 +14,12 @@ module.exports = function tdViteTransformReact({ htmlPath = './src/index.html', 
         {
             name: 'vite-plugin-tongdun-react-transfrom',
             enforce: 'pre',
-            config() {
+            config(viteConfig) {
                 return {
                     build: {
                         rollupOptions: {
                             input: {
-                                index: path.resolve(__dirname, htmlPath)
+                                index: path.resolve(viteConfig.root, htmlPath)
                             }
                         }
                     }
@@ -38,9 +38,7 @@ module.exports = function tdViteTransformReact({ htmlPath = './src/index.html', 
             },
             transformIndexHtml: {
                 transform(html) {
-                    const htmlStr = fs.readFileSync(path.resolve(process.cwd(), htmlPath), 'utf-8')
-
-                    return htmlStr + `<script type="module" src="${entriesPath}"></script>`
+                    return html + `<script type="module" src="${entriesPath}"></script>`
                 }
             },
             transform(code, src, opt) {
@@ -54,9 +52,8 @@ module.exports = function tdViteTransformReact({ htmlPath = './src/index.html', 
                         if (code.includes('getAppStore')) {
                             const list = code.split('\n').map(i => {
                                 if (i.includes('import') && i.includes('getAppStore')) {
-                                    return 'const getAppStore = window.__app__'
+                                    return 'const getAppStore = () => window.__app__._store'
                                 }
-
                                 return i;
                             })
 
