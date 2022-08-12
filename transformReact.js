@@ -3,7 +3,7 @@
  * @Author: 郑泳健
  * @Date: 2022-08-08 10:04:24
  * @LastEditors: 郑泳健
- * @LastEditTime: 2022-08-11 19:28:38
+ * @LastEditTime: 2022-08-12 10:59:15
  */
 const path = require('path');
 const history = require('connect-history-api-fallback');
@@ -44,7 +44,7 @@ module.exports = function tdViteTransformReact({ htmlPath = './src/index.html', 
                 // fix 循环依赖的问题
                 if (['.js', '.ts', '.jsx', '.tsx'].includes(path.extname(src))) {
                     // 入口导出getAppStore
-                    if (src.includes(path.resolve(process.cwd(), './src/app'))) {
+                    if (src.includes('src/app')) {
                         code += '\n window.__app__ = app'
                     } else {
                         // 如果有getAppStore的文件就要做特殊处理
