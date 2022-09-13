@@ -3,7 +3,7 @@
  * @Author: 郑泳健
  * @Date: 2022-08-08 10:04:24
  * @LastEditors: 郑泳健
- * @LastEditTime: 2022-08-12 10:59:15
+ * @LastEditTime: 2022-09-13 14:36:52
  */
 const path = require('path');
 const history = require('connect-history-api-fallback');
@@ -51,7 +51,7 @@ module.exports = function tdViteTransformReact({ htmlPath = './src/index.html', 
                         if (code.includes('getAppStore')) {
                             const list = code.split('\n').map(i => {
                                 if (i.includes('import') && i.includes('getAppStore')) {
-                                    return 'const getAppStore = () => window.__app__._store'
+                                    return 'const getAppStore = () => window.__app__?._store'
                                 }
                                 return i;
                             })
